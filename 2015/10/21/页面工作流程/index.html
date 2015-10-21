@@ -45,16 +45,31 @@
   <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=0.4.5.2" />
 
 
-<meta name="description" content="学习总结 思考感悟 知识管理">
+<meta name="description" content="页面工作流程by 小总管
+
+这篇文章给自己读，也给未来的组里的小白们，话说以后会有小白吗？不会就我们两只吧？满满的都是泪
+‘xxxxxxxx/ng/app/che/common/test/echarts_test/index.html#app/che/common/test/echarts_test/quering.js’
+以这个链接为例，这个链接是个app页面，在外面加了一层壳
+&apos;xxxxxxx">
 <meta property="og:type" content="article">
 <meta property="og:title" content="页面工作流程">
 <meta property="og:url" content="http://yoursite.com/2015/10/21/页面工作流程/index.html">
 <meta property="og:site_name" content="guaziWF">
-<meta property="og:description" content="学习总结 思考感悟 知识管理">
-<meta property="og:updated_time" content="2015-10-21T10:41:48.000Z">
+<meta property="og:description" content="页面工作流程by 小总管
+
+这篇文章给自己读，也给未来的组里的小白们，话说以后会有小白吗？不会就我们两只吧？满满的都是泪
+‘xxxxxxxx/ng/app/che/common/test/echarts_test/index.html#app/che/common/test/echarts_test/quering.js’
+以这个链接为例，这个链接是个app页面，在外面加了一层壳
+&apos;xxxxxxx">
+<meta property="og:updated_time" content="2015-10-21T11:00:49.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="页面工作流程">
-<meta name="twitter:description" content="学习总结 思考感悟 知识管理">
+<meta name="twitter:description" content="页面工作流程by 小总管
+
+这篇文章给自己读，也给未来的组里的小白们，话说以后会有小白吗？不会就我们两只吧？满满的都是泪
+‘xxxxxxxx/ng/app/che/common/test/echarts_test/index.html#app/che/common/test/echarts_test/quering.js’
+以这个链接为例，这个链接是个app页面，在外面加了一层壳
+&apos;xxxxxxx">
 
 
 <script type="text/javascript" id="hexo.configuration">
@@ -190,7 +205,7 @@
         <div class="post-meta">
           <span class="post-time">
             發表於
-            <time itemprop="dateCreated" datetime="2015-10-21T18:41:48+08:00" content="2015-10-21">
+            <time itemprop="dateCreated" datetime="2015-10-21T18:59:55+08:00" content="2015-10-21">
               2015-10-21
             </time>
           </span>
@@ -214,7 +229,29 @@
       
 
       
-        <span itemprop="articleBody"></span>
+        <span itemprop="articleBody"><h2 id="页面工作流程">页面工作流程</h2><p>by 小总管</p>
+<hr>
+<p>这篇文章给自己读，也给未来的组里的小白们，话说以后会有小白吗？不会就我们两只吧？满满的都是泪</p>
+<pre><code>‘xxxxxxxx<span class="regexp">/ng/</span>app<span class="regexp">/che/</span>common<span class="regexp">/test/</span>echarts_test<span class="regexp">/index.html#app/</span>che<span class="regexp">/common/</span>test<span class="regexp">/echarts_test/</span>quering.js’
+</code></pre><p>以这个链接为例，这个链接是个app页面，在外面加了一层壳</p>
+<pre><code><span class="symbol">'xxxxxxxxx</span>/ng/app/che/common/test/echarts_test/index.html'
+</code></pre><hr>
+<p>所以访问页面时首先进入这个index.html页面，下面来看html的源码，主要看javascript代码：</p>
+<p>1 最先遇到的script标签中，显示了引入的js文件 为g.js和echarts-all，js  <br><br>2 接下来遇到的script标签中，js代码是判断你所使用的手机是安卓系统还是ios系统  <br><br>3 最后一部分的script标签中，直接看下面这部分代码  <br></p>
+<pre><code><span class="xml">function onVersionJSReady () </span><span class="expression">{
+        <span class="variable">G.use</span>(['<span class="variable">app</span><span class="end-block">/client</span><span class="end-block">/common</span><span class="end-block">/init.js</span>', '<span class="variable">app</span><span class="end-block">/client</span><span class="end-block">/common</span><span class="end-block">/style</span><span class="end-block">/global.jcss</span>'])
+            <span class="variable">.fail</span>(<span class="variable">onFail</span>);
+    }</span><span class="xml"></span>
+</code></pre><p>这里显示了g.js依赖于init.js （global.jcss是加载的所有样式，这里不管）。主要看init.js。  <br><br>到这里是不是已经懂了一半了，来来来，继续。  <br><br>init.js是页面加载时初始化页面的，这里通过对href的处理，获取到链接的hash值等等，具体看init.js的源码中各个变量的值，这里主要讲的是异步加载这个函数。  <br></p>
+<pre><code><span class="built_in">require</span>.async([viewPath], <span class="function"><span class="keyword">function</span> (<span class="params">view</span>) </span>{
+    ...
+    view.init(config);
+    ...
+} 
+</code></pre><p>查了一些资料得出：它的作用是异步加载模块，并在加载完模块后执行回调函数。这里加载了根据hash值查到的此路径下得文件，然后执行回调函数。view就是加载的文件返回的对象。对view.init(config)进行调试后发现进入的就是quering.js里的init方法，这时就开始加载页面和相关数据。</p>
+<hr>
+<p>so 其实流程相当简单，首先进入index.html文件中，看g.js依赖了init.js,进入init.js搞懂每个变量的意义，并发现了异步加载函数通过加载viewPath这个变量路径下得文件得到返回的对象，调用对象提供的init方法……  <br><br>就是这样……哪里说得不对求指正啊。</p>
+</span>
       
     </div>
 
@@ -324,7 +361,7 @@
           <div class="post-toc">
             
             
-              <p class="post-toc-empty">此文章未包含目錄</p>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#页面工作流程"><span class="nav-number">1.</span> <span class="nav-text">页面工作流程</span></a></li></ol></div>
             
           </div>
           <div class="post-toc-indicator-bottom post-toc-indicator"></div>
