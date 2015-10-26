@@ -182,6 +182,169 @@
             
             
               
+                <a class="post-title-link" href="/2015/10/26/echarts/" itemprop="url">
+                  未命名
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            發表於
+            <time itemprop="dateCreated" datetime="2015-10-26T18:50:30+08:00" content="2015-10-26">
+              2015-10-26
+            </time>
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body">
+
+      
+      
+
+      
+        
+          <span itemprop="articleBody">
+            
+              <p>##echarts<br>by 三土家的宇宁</p>
+<p>　　这是个百度大总管整出来的用图表展示数据的插件，要用专业一点提高逼格的叫法就叫”数据可视化”，能生成各种柱形图，饼形图，折线图，地图…看着很酷炫碉堡，还能兼容浏览器。<br><br>　　附上官网的地址<a href="http://echarts.baidu.com/上面有各种示例和参考文档，项目里用的差得不多的话可以直接拿例子来改改。" target="_blank" rel="external">http://echarts.baidu.com/上面有各种示例和参考文档，项目里用的差得不多的话可以直接拿例子来改改。</a><br><br>　　echarts用的时候是要依赖百度和另一个绘图的库zrender的，所以如果想用ＡＭＤ方式引入echarts的话就得先require一下zrender；<br><br>　　之后就可以引入echarts库了，要是要画和图表种类多的话完全可以直接引个dist/echarts-all.js(经过压缩)，或者source/echarts-all.js(没有压缩)这里面有所有种类的图表，就可以，或者更好的就是按需引入，比如只用画个地图，就只引个echarts-map.js来用。<br><br>　　之后就来把图整出来了，有三步要做的：初始化echarts对象；设置option；在页面上渲染出来；<br><br>　　在页面里面先留好具有宽和高的div,我们就用它绘制图表,获取到页面里的这个div元素，<br><br>　　　　《div id=”chart” data-role=”chart” style=”width:100%;height:500px”》《/div》        //就用这个div了<br><br>　　　　var myEchart = window.echarts.init(config.$chart[0]);//用init方法，传这个div进去初始化得到对象，将来就用这个echarts对象渲染出图来；<br><br>　　然后就要设置option了，这个option里就是具体的图表要显示的东西，要怎么个样式来显示…这些，比如说画个有统计数据的信息的柱形图(<a href="http://echarts.baidu.com/doc/example.html在这里可以一个个找来改改调调看" target="_blank" rel="external">http://echarts.baidu.com/doc/example.html在这里可以一个个找来改改调调看</a>):<br></p>
+<pre><code>option = {
+<span class="string">tooltip :</span> {　　　　　　<span class="comment">//设置鼠标停在图上时的提示</span>
+<span class="label">    trigger:</span> <span class="string">'axis'</span>,
+    <span class="string">axisPointer :</span> {            <span class="comment">// 坐标轴指示器，坐标轴触发有效</span>
+        <span class="string">type :</span> <span class="string">'shadow'</span>        <span class="comment">// 默认为直线，可选为：'line' | 'shadow'</span>
+    }
+},
+<span class="string">legend:</span> {　　　　　　<span class="comment">//设图例的内容样式(这个就只设了下内容)</span>
+<span class="label">    data:</span>[<span class="string">'直接访问'</span>, <span class="string">'邮件营销'</span>,<span class="string">'联盟广告'</span>,<span class="string">'视频广告'</span>,<span class="string">'搜索引擎'</span>]
+},
+<span class="string">toolbox:</span> {　　　　　<span class="comment">//设置对这个图操作的各种小工具</span>
+    <span class="string">show :</span> <span class="literal">true</span>,
+    <span class="string">feature :</span> {
+        <span class="string">mark :</span> {<span class="string">show:</span> <span class="literal">true</span>},
+        <span class="string">dataView :</span> {<span class="string">show:</span> <span class="literal">true</span>, <span class="string">readOnly:</span> <span class="literal">false</span>},
+        <span class="string">magicType :</span> {<span class="string">show:</span> <span class="literal">true</span>, <span class="string">type:</span> [<span class="string">'line'</span>, <span class="string">'bar'</span>, <span class="string">'stack'</span>, <span class="string">'tiled'</span>]},
+        <span class="string">restore :</span> {<span class="string">show:</span> <span class="literal">true</span>},
+        <span class="string">saveAsImage :</span> {<span class="string">show:</span> <span class="literal">true</span>}
+    }
+},
+<span class="string">calculable :</span> <span class="literal">true</span>,　　<span class="comment">//可以拖拽着图表的一个个区域来重新计算</span>
+<span class="string">xAxis :</span> [　　　　　　<span class="comment">//设置x轴</span>
+    {
+        <span class="string">type :</span> <span class="string">'value'</span>
+    }
+],
+<span class="string">yAxis :</span> [　　　　　　<span class="comment">//设置y轴</span>
+    {
+        <span class="string">type :</span> <span class="string">'category'</span>,
+        <span class="string">data :</span> [<span class="string">'周一'</span>,<span class="string">'周二'</span>,<span class="string">'周三'</span>,<span class="string">'周四'</span>,<span class="string">'周五'</span>,<span class="string">'周六'</span>,<span class="string">'周日'</span>]
+    }
+],
+<span class="string">series :</span> [　　　　　<span class="comment">//设置每一项的具体数据和展示样式</span>
+    {
+<span class="label">        name:</span><span class="string">'直接访问'</span>,
+<span class="label">        type:</span><span class="string">'bar'</span>,
+<span class="label">        stack:</span> <span class="string">'总量'</span>,
+        <span class="string">itemStyle :</span> { <span class="string">normal:</span> {<span class="string">label :</span> {<span class="string">show:</span> <span class="literal">true</span>, <span class="string">position:</span> <span class="string">'insideRight'</span>}}},
+<span class="label">        data:</span>[<span class="number">320</span>, <span class="number">302</span>, <span class="number">301</span>, <span class="number">334</span>, <span class="number">390</span>, <span class="number">330</span>, <span class="number">320</span>]
+    },
+    {
+<span class="label">        name:</span><span class="string">'邮件营销'</span>,
+<span class="label">        type:</span><span class="string">'bar'</span>,
+<span class="label">        stack:</span> <span class="string">'总量'</span>,
+        <span class="string">itemStyle :</span> { <span class="string">normal:</span> {<span class="string">label :</span> {<span class="string">show:</span> <span class="literal">true</span>, <span class="string">position:</span> <span class="string">'insideRight'</span>}}},
+<span class="label">        data:</span>[<span class="number">120</span>, <span class="number">132</span>, <span class="number">101</span>, <span class="number">134</span>, <span class="number">90</span>, <span class="number">230</span>, <span class="number">210</span>]
+    },
+    {
+<span class="label">        name:</span><span class="string">'联盟广告'</span>,
+<span class="label">        type:</span><span class="string">'bar'</span>,
+<span class="label">        stack:</span> <span class="string">'总量'</span>,
+        <span class="string">itemStyle :</span> { <span class="string">normal:</span> {<span class="string">label :</span> {<span class="string">show:</span> <span class="literal">true</span>, <span class="string">position:</span> <span class="string">'insideRight'</span>}}},
+<span class="label">        data:</span>[<span class="number">220</span>, <span class="number">182</span>, <span class="number">191</span>, <span class="number">234</span>, <span class="number">290</span>, <span class="number">330</span>, <span class="number">310</span>]
+    },
+    {
+<span class="label">        name:</span><span class="string">'视频广告'</span>,
+<span class="label">        type:</span><span class="string">'bar'</span>,
+<span class="label">        stack:</span> <span class="string">'总量'</span>,
+        <span class="string">itemStyle :</span> { <span class="string">normal:</span> {<span class="string">label :</span> {<span class="string">show:</span> <span class="literal">true</span>, <span class="string">position:</span> <span class="string">'insideRight'</span>}}},
+<span class="label">        data:</span>[<span class="number">150</span>, <span class="number">212</span>, <span class="number">201</span>, <span class="number">154</span>, <span class="number">190</span>, <span class="number">330</span>, <span class="number">410</span>]
+    },
+    {
+<span class="label">        name:</span><span class="string">'搜索引擎'</span>,
+<span class="label">        type:</span><span class="string">'bar'</span>,
+<span class="label">        stack:</span> <span class="string">'总量'</span>,
+        <span class="string">itemStyle :</span> { <span class="string">normal:</span> {<span class="string">label :</span> {<span class="string">show:</span> <span class="literal">true</span>, <span class="string">position:</span> <span class="string">'insideRight'</span>}}},
+<span class="label">        data:</span>[<span class="number">820</span>, <span class="number">832</span>, <span class="number">901</span>, <span class="number">934</span>, <span class="number">1290</span>, <span class="number">1330</span>, <span class="number">1320</span>]
+    }
+]
+</code></pre><p>};<br><br>　　通过option就把关于图表要展示的信息和展现的样式设置好；<br><br>　　之后就是最后一步渲染页面了，很容易的，<br><br>　　myEchart.setOption(this.option);　　//通过之前初始化出来的echarts对象，使用它的setOption方法<br>然后就可以看到图表展现在页面上了;<br><br>　　markdown的工具插不了图片..囧<br></p>
+<hr>
+<p>就是这么个过程了</p>
+<hr>
+<p>小分割一下</p>
+<hr>
+<p>再列上点比较常用的和比较坑爹的option的设置，想起来再加，再想再加…<br><br>给itemstyle里设柱和颜色:可以用个函数<br></p>
+<pre><code>   color: <span class="function"><span class="keyword">function</span><span class="params">(params)</span> </span>{
+    <span class="comment">// build a color map as your need.</span>
+    <span class="keyword">var</span> colorList = [　　　　　<span class="comment">//柱子们会循环加上colorlist里面的颜色</span>
+      <span class="string">'#C1232B'</span>,<span class="string">'#B5C334'</span>,<span class="string">'#FCCE10'</span>,<span class="string">'#E87C25'</span>,<span class="string">'#27727B'</span>,
+       <span class="string">'#FE8463'</span>,<span class="string">'#9BCA63'</span>,<span class="string">'#FAD860'</span>,<span class="string">'#F3A43B'</span>,<span class="string">'#60C0DD'</span>,
+       <span class="string">'#D7504B'</span>,<span class="string">'#C6E579'</span>,<span class="string">'#F4E001'</span>,<span class="string">'#F0805A'</span>,<span class="string">'#26C0C0'</span>
+    ];
+    <span class="keyword">return</span> colorList[params.dataIndex]
+},&lt;br/&gt;
+</code></pre><p>label里的formatter:a,b,c三个选项,分别代表图表的name属性值，x轴坐标值，单个柱的数据，中间可以加像斜杠，百分号，这些，再用设好position就可以显示在柱上了；<br><br>markpoint,symbol,可以给图上加点啊,图啊,各种小提示这些；<br></p>
+
+            
+          </span>
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
                 <a class="post-title-link" href="/2015/10/23/flexbox学习总结/" itemprop="url">
                   未命名
                 </a>
@@ -427,7 +590,7 @@ order：&lt;<span class="type">number</span>&gt;
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">2</span>
+              <span class="site-state-item-count">3</span>
               <span class="site-state-item-name">文章</span>
             </a>
           </div>
