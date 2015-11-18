@@ -45,31 +45,28 @@
   <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=0.4.5.2" />
 
 
-<meta name="description" content="页面工作流程by 小总管
+<meta name="description" content="装环境, 上线流程
 
-这篇文章给自己读，也给未来的组里的小白们，话说以后会有小白吗？不会就我们两只吧？满满的都是泪
-‘xxxxxxxx/ng/app/che/common/test/echarts_test/index.html#app/che/common/test/echarts_test/quering.js’
-以这个链接为例，这个链接是个app页面，在外面加了一层壳
-&apos;xxxxxxx">
+装环境
+
+一共需要装node, git, svn, nginx工具的话用sublime和chrome, 还可以装个git和客户端提交时方便, charles用来代理连手机可以参照我们前端组的wiki: http://wiki.corp.ganji.com/%E5%89%8D%E7%AB%AF%E7%BB%84/%E5%85%B3%E4%BA%8ENG-staticubuntu">
 <meta property="og:type" content="article">
-<meta property="og:title" content="页面工作流程">
-<meta property="og:url" content="http://yoursite.com/2015/10/21/页面工作流程/index.html">
+<meta property="og:title" content="guaziWF">
+<meta property="og:url" content="http://yoursite.com/2015/11/18/环境安装/index.html">
 <meta property="og:site_name" content="guaziWF">
-<meta property="og:description" content="页面工作流程by 小总管
+<meta property="og:description" content="装环境, 上线流程
 
-这篇文章给自己读，也给未来的组里的小白们，话说以后会有小白吗？不会就我们两只吧？满满的都是泪
-‘xxxxxxxx/ng/app/che/common/test/echarts_test/index.html#app/che/common/test/echarts_test/quering.js’
-以这个链接为例，这个链接是个app页面，在外面加了一层壳
-&apos;xxxxxxx">
-<meta property="og:updated_time" content="2015-10-21T11:00:49.000Z">
+装环境
+
+一共需要装node, git, svn, nginx工具的话用sublime和chrome, 还可以装个git和客户端提交时方便, charles用来代理连手机可以参照我们前端组的wiki: http://wiki.corp.ganji.com/%E5%89%8D%E7%AB%AF%E7%BB%84/%E5%85%B3%E4%BA%8ENG-staticubuntu">
+<meta property="og:updated_time" content="2015-11-17T10:11:43.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="页面工作流程">
-<meta name="twitter:description" content="页面工作流程by 小总管
+<meta name="twitter:title" content="guaziWF">
+<meta name="twitter:description" content="装环境, 上线流程
 
-这篇文章给自己读，也给未来的组里的小白们，话说以后会有小白吗？不会就我们两只吧？满满的都是泪
-‘xxxxxxxx/ng/app/che/common/test/echarts_test/index.html#app/che/common/test/echarts_test/quering.js’
-以这个链接为例，这个链接是个app页面，在外面加了一层壳
-&apos;xxxxxxx">
+装环境
+
+一共需要装node, git, svn, nginx工具的话用sublime和chrome, 还可以装个git和客户端提交时方便, charles用来代理连手机可以参照我们前端组的wiki: http://wiki.corp.ganji.com/%E5%89%8D%E7%AB%AF%E7%BB%84/%E5%85%B3%E4%BA%8ENG-staticubuntu">
 
 
 <script type="text/javascript" id="hexo.configuration">
@@ -81,7 +78,7 @@
 
 
 
-  <title> 页面工作流程 | guaziWF </title>
+  <title>  | guaziWF </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
@@ -196,7 +193,7 @@
             
             
               
-                页面工作流程
+                
               
             
           </h1>
@@ -205,8 +202,8 @@
         <div class="post-meta">
           <span class="post-time">
             發表於
-            <time itemprop="dateCreated" datetime="2015-10-21T18:59:55+08:00" content="2015-10-21">
-              2015-10-21
+            <time itemprop="dateCreated" datetime="2015-11-18T11:01:18+08:00" content="2015-11-18">
+              2015-11-18
             </time>
           </span>
 
@@ -229,28 +226,16 @@
       
 
       
-        <span itemprop="articleBody"><h2 id="页面工作流程">页面工作流程</h2><p>by 小总管</p>
+        <span itemprop="articleBody"><p>装环境, 上线流程<br><br></p>
 <hr>
-<p>这篇文章给自己读，也给未来的组里的小白们，话说以后会有小白吗？不会就我们两只吧？满满的都是泪</p>
-<pre><code>‘xxxxxxxx<span class="regexp">/ng/</span>app<span class="regexp">/che/</span>common<span class="regexp">/test/</span>echarts_test<span class="regexp">/index.html#app/</span>che<span class="regexp">/common/</span>test<span class="regexp">/echarts_test/</span>quering.js’
-</code></pre><p>以这个链接为例，这个链接是个app页面，在外面加了一层壳</p>
-<pre><code><span class="symbol">'xxxxxxxxx</span>/ng/app/che/common/test/echarts_test/index.html'
-</code></pre><hr>
-<p>所以访问页面时首先进入这个index.html页面，下面来看html的源码，主要看javascript代码：</p>
-<p>1 最先遇到的script标签中，显示了引入的js文件 为g.js和echarts-all，js  <br><br>2 接下来遇到的script标签中，js代码是判断你所使用的手机是安卓系统还是ios系统  <br><br>3 最后一部分的script标签中，直接看下面这部分代码  <br></p>
-<pre><code><span class="xml">function onVersionJSReady () </span><span class="expression">{
-        <span class="variable">G.use</span>(['<span class="variable">app</span><span class="end-block">/client</span><span class="end-block">/common</span><span class="end-block">/init.js</span>', '<span class="variable">app</span><span class="end-block">/client</span><span class="end-block">/common</span><span class="end-block">/style</span><span class="end-block">/global.jcss</span>'])
-            <span class="variable">.fail</span>(<span class="variable">onFail</span>);
-    }</span><span class="xml"></span>
-</code></pre><p>这里显示了g.js依赖于init.js （global.jcss是加载的所有样式，这里不管）。主要看init.js。  <br><br>到这里是不是已经懂了一半了，来来来，继续。  <br><br>init.js是页面加载时初始化页面的，这里通过对href的处理，获取到链接的hash值等等，具体看init.js的源码中各个变量的值，这里主要讲的是异步加载这个函数。  <br></p>
-<pre><code><span class="built_in">require</span>.async([viewPath], <span class="function"><span class="keyword">function</span> (<span class="params">view</span>) </span>{
-    ...
-    view.init(config);
-    ...
-} 
-</code></pre><p>查了一些资料得出：它的作用是异步加载模块，并在加载完模块后执行回调函数。这里加载了根据hash值查到的此路径下得文件，然后执行回调函数。view就是加载的文件返回的对象。对view.init(config)进行调试后发现进入的就是quering.js里的init方法，这时就开始加载页面和相关数据。</p>
+<p>装环境<br><br></p>
 <hr>
-<p>so 其实流程相当简单，首先进入index.html文件中，看g.js依赖了init.js,进入init.js搞懂每个变量的意义，并发现了异步加载函数通过加载viewPath这个变量路径下得文件得到返回的对象，调用对象提供的init方法……  <br><br>就是这样……哪里说得不对求指正啊。</p>
+<p>一共需要装node, git, svn, nginx<br><br>工具的话用sublime和chrome, 还可以装个git和客户端提交时方便, charles用来代理连手机<br><br>可以参照我们前端组的wiki: <a href="http://wiki.corp.ganji.com/%E5%89%8D%E7%AB%AF%E7%BB%84/%E5%85%B3%E4%BA%8ENG-static" target="_blank" rel="external">http://wiki.corp.ganji.com/%E5%89%8D%E7%AB%AF%E7%BB%84/%E5%85%B3%E4%BA%8ENG-static</a><br><br>ubuntu里面用npm来装, mac里用brew来装<br><br>brew在终端用命令 ruby -e “$(curl -fsSL <a href="https://raw.github.com/mxcl/homebrew/go" target="_blank" rel="external">https://raw.github.com/mxcl/homebrew/go</a>)”, 就可以装上, 之后想安装点什么东西就用 brew install xxxx 就可以<br><br>brew install node<br><br>brew install nginx<br><br>brew install svn<br><br>brew install git<br><br>ubuntu里面用npm就是 npm install xxxx 都一样的<br><br><br>这些工具都装上之后就可以把公司项目的代码拉到本地来, 可以先建个workplace文件夹, 以后工作的代码就都在这个文件夹里面, 进这个文件夹, 用命令 git clone 把(地址在wiki里面有), 拷到自己的电脑上<br>之后git里面所有的子模块都要先初始化, git submodule update –init , 再之后把所有的子模块都切换到 online 上, 不然之后会有乱问题, 可以用命令 git submodule foreach ‘git checkout online’ 但是这个命令可能执行不了, 那就手动一个个切 online , 基本的工具包括 ng_sta/src/app/che 下的client, ng_sta/src/com 下的g, mobile, 里面的lib,然后这些目录就一直保持在online 分支上干各种工作就对了(等牛逼那一天就有可能轮到改这里的文件了)<br> <br></p>
+<p>然后编译这里的文件, 用 grunt build, 全通过就对, 编译时候可能有不通过的地方也没关系, 进入到有问题的那个目录, checkout到online分支上pull一下, 然后再编译就能过了, 生成了一个build目录.<br><br>再之后要改nginx的配置, 一共两个地方, 输入 nginx -h 可以得到nginx安装的目录, 进这个目录改nginx.conf这个配置文件, 直接换一份就行; 还有就是在nginx目录下创建一个sites文件夹, 在里面 ganji_sta.conf这个配置文件, 要把里面的路径都改成自己的工作路径,<br> 然后环境就好了, 进到ng_sta里用grunt watch, 再保存ng_sta里的文件里时候就会自动编译, 生成编译后的文件在build目录里了.<br><br></p>
+<hr>
+<p>上线流程<br><br></p>
+<hr>
+<p>可以先建一个jira, 在apollo里右上角有个”创建问题”, 选择”web前端”, “新功能”, 会得到一个jira号, 再到gitlab里创建分支, “new branch”, 然后”name”就写jira号”feature/WF-xxxx”, “create from”, online, 就建完分支了.<br><br><br>代码写完后, 先把console.log那些都去掉, git commit push完, 在gitlab里能看到操作记录, 有merge request, 选好上到develop, 或者online, 提交merge request, 有权限的同学来merge, 就行了.</p>
 </span>
       
     </div>
@@ -262,13 +247,13 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
+              <a href="/2015/10/26/echarts/" rel="next" title="">
+                <i class="fa fa-chevron-left"></i> 
+              </a>
+            
           </div>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2015/10/23/flexbox学习总结/" rel="prev" title="">
-                 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -375,7 +360,7 @@
           <div class="post-toc">
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#页面工作流程"><span class="nav-number">1.</span> <span class="nav-text">页面工作流程</span></a></li></ol></div>
+              <p class="post-toc-empty">此文章未包含目錄</p>
             
           </div>
           <div class="post-toc-indicator-bottom post-toc-indicator"></div>
