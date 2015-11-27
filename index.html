@@ -182,6 +182,175 @@
             
             
               
+                <a class="post-title-link" href="/2015/11/27/guazi anniversary专题之coding坑总结/" itemprop="url">
+                  未命名
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            發表於
+            <time itemprop="dateCreated" datetime="2015-11-27T16:19:56+08:00" content="2015-11-27">
+              2015-11-27
+            </time>
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body">
+
+      
+      
+
+      
+        
+          <span itemprop="articleBody">
+            
+              <p>##瓜子一周年专题之coding坑总结</p>
+<p>访问的路径是这个：<a href="http://sta.ganji.com/ng/app/che/c2c_app/index.html#app/che/common/misc/anniversary/view/anniversary.js" target="_blank" rel="external">http://sta.ganji.com/ng/app/che/c2c_app/index.html#app/che/common/misc/anniversary/view/anniversary.js</a></p>
+<p>开始说的是video标签，结果做的过程中需求有改变，遇到了各种坑，各种问题。<br><br>1，在移动端的翻页是秋霞用插件直接加上的，pc端不可以翻页，这个插件是必须套在最外层的，但是移动端有个翻页开始在这个widget的外层加了一个div，导致翻页插件计算失误。以后遇到这种插件出问题的时候，多想想样式的页面结构<br><br>2，每次翻页有个图片插入的动画，需要在页面加载的时候根据屏幕的宽高给图片赋值，但是页面加载完成时，图片还没有加载进来，所以无法赋值。在页面的加载过程中，有时候样式是后面才加载的。这里用到了promise.all  或者anysc.series 就是一个所有图片都加载结束再赋值，重要的是这个coding的思维<br><br>3,分享按钮之样式，因为使用了app/che/common/lib/WeChatShare/share.js的分享widget,这里在test.html中分享的按钮放在页面的最下方，class为share 和我们的类名字冲突了，所以才会在一开始显示不出分享按钮。在手机测试过程中，小米的测试包有问题，所以一直没有反应。这里在使用别人的插件的时候，要看别人的样式和类名等等，不仅仅是调试的东西。<br><br>4，video自动播放在手机端不支持自动播放，同时在手机端第一次播放的时候加载有点问题，这个是兼容性的问题。<br><br>5，require.ansyc() 可以加载各种文件，参见js文件。开始自己写了一个加载link标签的方法，后来于新说可以直接使用require.ansyc()，异步加载这些<br><br>6, widget里直接function(){}<br><br>7，index.html的壳一定要用胜男的那个壳，这个时候要注意文件的路径问题<br><br>8，上传到git上的文件一定要是干净的，不用的文件都不要上传或者及时删除<br><br>9，注意模块化思想，加深理解<br><br>10，理解于新写的那些代码的思维和方法，值得学习</p>
+
+            
+          </span>
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                <a class="post-title-link" href="/2015/11/27/ganji_sta里代码结构/" itemprop="url">
+                  未命名
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            發表於
+            <time itemprop="dateCreated" datetime="2015-11-27T16:19:31+08:00" content="2015-11-27">
+              2015-11-27
+            </time>
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body">
+
+      
+      
+
+      
+        
+          <span itemprop="articleBody">
+            
+              <p></p><h4>ganji_sta里代码结构各种那些</h4><p></p>
+<hr>
+<p>也就是怎么在ganji_sta里写widget, 或者怎么把ng里的迁到ganji_sta里<br><br>(看这个之前还是先看ng_sta里的那套是咋整的吧, 明白ng里的, 迁到ganji_sta里就是加点东西改个路径那些就行了)</p>
+<hr>
+<p>就咱前端是用ng_sta的, 别人都用svn ganji_sta那一套, 给他们写的js widget那些经常得在ganji_sta上写一套代码, 测试用例.<br><br>ng_sta和ganji_sta里用的代码的区别除了路径, 还有就是因为ganji_sta里面不能build, 所以ng_sta代码里面开头define那些都得自己写上.</p>
+<hr>
+<p>ganji_sta里面的一份widget代码<br><br>ganji_sta/src/app/ms_v2/vehicle/common/widget/panel/testPanel.html <br><br></p>
+<ol>
+<li>引入ganji.js<br><br>ganji.js的路径是<br><br>script src=”<a href="http://sta.ganjistatic1.com/src/js/util/ganji/ganji.js&quot;&gt;" target="_blank" rel="external">http://sta.ganjistatic1.com/src/js/util/ganji/ganji.js&quot;&gt;</a>标签里面像普通html一样引就行<br><br>PS: 在要引ganji_sta里面的东西都是用<a href="http://sta.ganjistatic1.com/xxxxxx来引的" target="_blank" rel="external">http://sta.ganjistatic1.com/xxxxxx来引的</a>, 以后还有可能会引css, 图片那些<br><br></li>
+<li>初始化widget<br><br>在页面的下面, <body>标签里面引一下<br><br>script type=”text/javascript”&gt;<br><br> GJ.use(‘app/common/widget/widget.js’, function(widget){<pre><code>widget.initWidgets();<span class="tag">&lt;<span class="title">br</span> /&gt;</span>
+</code></pre> });<br><br><br>就是先GJ.use了widget.js, 然后初始化widget, 执行了Widget的initWidgets()的方法, 会找到页面里面所有的data-widget, 这个和ng_sta里面初始化widget那一套就是一样的..好像语言啰嗦了..<br><br><br><br>以上的两步ganji_sta里啥页面都是这一套没差的<br><br><br></body></li>
+<li>再改改咱的js文件<br>在ganji_sta里没有builder帮着编译了, ng_sta里js编译之后就在ng_sta/build文件夹里面生成出开头加define的js文件, 所以编译, 加define这些就人工加<br><br>之前那个testPanel.html用的js, <br>app/ms_v2/vehicle/common/widget/panel/panel.js<br><br>人工加define: <br><br>GJ.add(‘app/…/panel.js’, [‘app/…/pop.css’, ‘jquery’, ‘app/…/widget.js’], function(require, exports, module) {<br>exports.xxx<br><br>});<br><br>GJ.add()里面依次是, 模块id(就是js在路径), [依赖文件,包括css], 导出的方法.<br></li>
+<li>也算一步吧, 就是tpl里把widget路径那些写成ganji_sta里的就行了</li>
+</ol>
+<hr>
+<p>想一下还真没什么特别的, 就一个流程换一下, 本质都和ng一样的.</p>
+
+            
+          </span>
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
                 <a class="post-title-link" href="/2015/11/18/环境安装/" itemprop="url">
                   未命名
                 </a>
@@ -675,7 +844,7 @@ order：&lt;<span class="type">number</span>&gt;
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">4</span>
+              <span class="site-state-item-count">6</span>
               <span class="site-state-item-name">文章</span>
             </a>
           </div>

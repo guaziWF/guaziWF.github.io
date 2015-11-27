@@ -45,28 +45,28 @@
   <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=0.4.5.2" />
 
 
-<meta name="description" content="装环境, 上线流程
+<meta name="description" content="ganji_sta里代码结构各种那些
 
-装环境
+也就是怎么在ganji_sta里写widget, 或者怎么把ng里的迁到ganji_sta里(看这个之前还是先看ng_sta里的那套是咋整的吧, 明白ng里的, 迁到ganji_sta里就是加点东西改个路径那些就行了)
 
-一共需要装node, git, svn, nginx工具的话用sublime和chrome, 还可以装个git和客户端提交时方便, charles用来代理连手机可以参照我们前端组的wiki: http://wiki.corp.ganji.com/%E5%89%8D%E7%AB%AF%E7%BB%84/%E5%85%B3%E4%BA%8ENG-staticubuntu">
+就咱前端是用ng_sta的, 别人都用svn ganji_sta那一套, 给他们写的js widget那些经常得在ganji_sta上写一">
 <meta property="og:type" content="article">
 <meta property="og:title" content="guaziWF">
-<meta property="og:url" content="http://yoursite.com/2015/11/18/环境安装/index.html">
+<meta property="og:url" content="http://yoursite.com/2015/11/27/ganji_sta里代码结构/index.html">
 <meta property="og:site_name" content="guaziWF">
-<meta property="og:description" content="装环境, 上线流程
+<meta property="og:description" content="ganji_sta里代码结构各种那些
 
-装环境
+也就是怎么在ganji_sta里写widget, 或者怎么把ng里的迁到ganji_sta里(看这个之前还是先看ng_sta里的那套是咋整的吧, 明白ng里的, 迁到ganji_sta里就是加点东西改个路径那些就行了)
 
-一共需要装node, git, svn, nginx工具的话用sublime和chrome, 还可以装个git和客户端提交时方便, charles用来代理连手机可以参照我们前端组的wiki: http://wiki.corp.ganji.com/%E5%89%8D%E7%AB%AF%E7%BB%84/%E5%85%B3%E4%BA%8ENG-staticubuntu">
-<meta property="og:updated_time" content="2015-11-17T10:11:43.000Z">
+就咱前端是用ng_sta的, 别人都用svn ganji_sta那一套, 给他们写的js widget那些经常得在ganji_sta上写一">
+<meta property="og:updated_time" content="2015-11-27T07:56:48.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="guaziWF">
-<meta name="twitter:description" content="装环境, 上线流程
+<meta name="twitter:description" content="ganji_sta里代码结构各种那些
 
-装环境
+也就是怎么在ganji_sta里写widget, 或者怎么把ng里的迁到ganji_sta里(看这个之前还是先看ng_sta里的那套是咋整的吧, 明白ng里的, 迁到ganji_sta里就是加点东西改个路径那些就行了)
 
-一共需要装node, git, svn, nginx工具的话用sublime和chrome, 还可以装个git和客户端提交时方便, charles用来代理连手机可以参照我们前端组的wiki: http://wiki.corp.ganji.com/%E5%89%8D%E7%AB%AF%E7%BB%84/%E5%85%B3%E4%BA%8ENG-staticubuntu">
+就咱前端是用ng_sta的, 别人都用svn ganji_sta那一套, 给他们写的js widget那些经常得在ganji_sta上写一">
 
 
 <script type="text/javascript" id="hexo.configuration">
@@ -202,8 +202,8 @@
         <div class="post-meta">
           <span class="post-time">
             發表於
-            <time itemprop="dateCreated" datetime="2015-11-18T11:01:18+08:00" content="2015-11-18">
-              2015-11-18
+            <time itemprop="dateCreated" datetime="2015-11-27T16:19:31+08:00" content="2015-11-27">
+              2015-11-27
             </time>
           </span>
 
@@ -226,16 +226,22 @@
       
 
       
-        <span itemprop="articleBody"><p>装环境, 上线流程<br><br></p>
+        <span itemprop="articleBody"><p></p><h4>ganji_sta里代码结构各种那些</h4><p></p>
 <hr>
-<p>装环境<br><br></p>
+<p>也就是怎么在ganji_sta里写widget, 或者怎么把ng里的迁到ganji_sta里<br><br>(看这个之前还是先看ng_sta里的那套是咋整的吧, 明白ng里的, 迁到ganji_sta里就是加点东西改个路径那些就行了)</p>
 <hr>
-<p>一共需要装node, git, svn, nginx<br><br>工具的话用sublime和chrome, 还可以装个git和客户端提交时方便, charles用来代理连手机<br><br>可以参照我们前端组的wiki: <a href="http://wiki.corp.ganji.com/%E5%89%8D%E7%AB%AF%E7%BB%84/%E5%85%B3%E4%BA%8ENG-static" target="_blank" rel="external">http://wiki.corp.ganji.com/%E5%89%8D%E7%AB%AF%E7%BB%84/%E5%85%B3%E4%BA%8ENG-static</a><br><br>ubuntu里面用npm来装, mac里用brew来装<br><br>brew在终端用命令 ruby -e “$(curl -fsSL <a href="https://raw.github.com/mxcl/homebrew/go" target="_blank" rel="external">https://raw.github.com/mxcl/homebrew/go</a>)”, 就可以装上, 之后想安装点什么东西就用 brew install xxxx 就可以<br><br>brew install node<br><br>brew install nginx<br><br>brew install svn<br><br>brew install git<br><br>ubuntu里面用npm就是 npm install xxxx 都一样的<br><br><br>这些工具都装上之后就可以把公司项目的代码拉到本地来, 可以先建个workplace文件夹, 以后工作的代码就都在这个文件夹里面, 进这个文件夹, 用命令 git clone 把(地址在wiki里面有), 拷到自己的电脑上<br>之后git里面所有的子模块都要先初始化, git submodule update –init , 再之后把所有的子模块都切换到 online 上, 不然之后会有乱问题, 可以用命令 git submodule foreach ‘git checkout online’ 但是这个命令可能执行不了, 那就手动一个个切 online , 基本的工具包括 ng_sta/src/app/che 下的client, ng_sta/src/com 下的g, mobile, 里面的lib,然后这些目录就一直保持在online 分支上干各种工作就对了(等牛逼那一天就有可能轮到改这里的文件了)<br> <br></p>
-<p>然后编译这里的文件, 用 grunt build, 全通过就对, 编译时候可能有不通过的地方也没关系, 进入到有问题的那个目录, checkout到online分支上pull一下, 然后再编译就能过了, 生成了一个build目录.<br><br>再之后要改nginx的配置, 一共两个地方, 输入 nginx -h 可以得到nginx安装的目录, 进这个目录改nginx.conf这个配置文件, 直接换一份就行; 还有就是在nginx目录下创建一个sites文件夹, 在里面 ganji_sta.conf这个配置文件, 要把里面的路径都改成自己的工作路径,<br> 然后环境就好了, 进到ng_sta里用grunt watch, 再保存ng_sta里的文件里时候就会自动编译, 生成编译后的文件在build目录里了.<br><br></p>
+<p>就咱前端是用ng_sta的, 别人都用svn ganji_sta那一套, 给他们写的js widget那些经常得在ganji_sta上写一套代码, 测试用例.<br><br>ng_sta和ganji_sta里用的代码的区别除了路径, 还有就是因为ganji_sta里面不能build, 所以ng_sta代码里面开头define那些都得自己写上.</p>
 <hr>
-<p>上线流程<br><br></p>
+<p>ganji_sta里面的一份widget代码<br><br>ganji_sta/src/app/ms_v2/vehicle/common/widget/panel/testPanel.html <br><br></p>
+<ol>
+<li>引入ganji.js<br><br>ganji.js的路径是<br><br>script src=”<a href="http://sta.ganjistatic1.com/src/js/util/ganji/ganji.js&quot;&gt;" target="_blank" rel="external">http://sta.ganjistatic1.com/src/js/util/ganji/ganji.js&quot;&gt;</a>标签里面像普通html一样引就行<br><br>PS: 在要引ganji_sta里面的东西都是用<a href="http://sta.ganjistatic1.com/xxxxxx来引的" target="_blank" rel="external">http://sta.ganjistatic1.com/xxxxxx来引的</a>, 以后还有可能会引css, 图片那些<br><br></li>
+<li>初始化widget<br><br>在页面的下面, <body>标签里面引一下<br><br>script type=”text/javascript”&gt;<br><br> GJ.use(‘app/common/widget/widget.js’, function(widget){<pre><code>widget.initWidgets();<span class="tag">&lt;<span class="title">br</span> /&gt;</span>
+</code></pre> });<br><br><br>就是先GJ.use了widget.js, 然后初始化widget, 执行了Widget的initWidgets()的方法, 会找到页面里面所有的data-widget, 这个和ng_sta里面初始化widget那一套就是一样的..好像语言啰嗦了..<br><br><br><br>以上的两步ganji_sta里啥页面都是这一套没差的<br><br><br></body></li>
+<li>再改改咱的js文件<br>在ganji_sta里没有builder帮着编译了, ng_sta里js编译之后就在ng_sta/build文件夹里面生成出开头加define的js文件, 所以编译, 加define这些就人工加<br><br>之前那个testPanel.html用的js, <br>app/ms_v2/vehicle/common/widget/panel/panel.js<br><br>人工加define: <br><br>GJ.add(‘app/…/panel.js’, [‘app/…/pop.css’, ‘jquery’, ‘app/…/widget.js’], function(require, exports, module) {<br>exports.xxx<br><br>});<br><br>GJ.add()里面依次是, 模块id(就是js在路径), [依赖文件,包括css], 导出的方法.<br></li>
+<li>也算一步吧, 就是tpl里把widget路径那些写成ganji_sta里的就行了</li>
+</ol>
 <hr>
-<p>可以先建一个jira, 在apollo里右上角有个”创建问题”, 选择”web前端”, “新功能”, 会得到一个jira号, 再到gitlab里创建分支, “new branch”, 然后”name”就写jira号”feature/WF-xxxx”, “create from”, online, 就建完分支了.<br><br><br>代码写完后, 先把console.log那些都去掉, git commit push完, 在gitlab里能看到操作记录, 有merge request, 选好上到develop, 或者online, 提交merge request, 有权限的同学来merge, 就行了.</p>
+<p>想一下还真没什么特别的, 就一个流程换一下, 本质都和ng一样的.</p>
 </span>
       
     </div>
@@ -247,7 +253,7 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2015/10/26/echarts/" rel="next" title="">
+              <a href="/2015/11/18/环境安装/" rel="next" title="">
                 <i class="fa fa-chevron-left"></i> 
               </a>
             
@@ -255,7 +261,7 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2015/11/27/ganji_sta里代码结构/" rel="prev" title="">
+              <a href="/2015/11/27/guazi anniversary专题之coding坑总结/" rel="prev" title="">
                  <i class="fa fa-chevron-right"></i>
               </a>
             
@@ -364,7 +370,7 @@
           <div class="post-toc">
             
             
-              <p class="post-toc-empty">此文章未包含目錄</p>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#undefined"><span class="nav-number">1.</span> <span class="nav-text">ganji_sta里代码结构各种那些</span></a></li></ol></div>
             
           </div>
           <div class="post-toc-indicator-bottom post-toc-indicator"></div>

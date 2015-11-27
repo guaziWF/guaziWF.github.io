@@ -45,28 +45,22 @@
   <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=0.4.5.2" />
 
 
-<meta name="description" content="装环境, 上线流程
-
-装环境
-
-一共需要装node, git, svn, nginx工具的话用sublime和chrome, 还可以装个git和客户端提交时方便, charles用来代理连手机可以参照我们前端组的wiki: http://wiki.corp.ganji.com/%E5%89%8D%E7%AB%AF%E7%BB%84/%E5%85%B3%E4%BA%8ENG-staticubuntu">
+<meta name="description" content="##瓜子一周年专题之coding坑总结
+访问的路径是这个：http://sta.ganji.com/ng/app/che/c2c_app/index.html#app/che/common/misc/anniversary/view/anniversary.js
+开始说的是video标签，结果做的过程中需求有改变，遇到了各种坑，各种问题。1，在移动端的翻页是秋霞用插件直接加上的，pc端不可以翻页，">
 <meta property="og:type" content="article">
 <meta property="og:title" content="guaziWF">
-<meta property="og:url" content="http://yoursite.com/2015/11/18/环境安装/index.html">
+<meta property="og:url" content="http://yoursite.com/2015/11/27/guazi anniversary专题之coding坑总结/index.html">
 <meta property="og:site_name" content="guaziWF">
-<meta property="og:description" content="装环境, 上线流程
-
-装环境
-
-一共需要装node, git, svn, nginx工具的话用sublime和chrome, 还可以装个git和客户端提交时方便, charles用来代理连手机可以参照我们前端组的wiki: http://wiki.corp.ganji.com/%E5%89%8D%E7%AB%AF%E7%BB%84/%E5%85%B3%E4%BA%8ENG-staticubuntu">
-<meta property="og:updated_time" content="2015-11-17T10:11:43.000Z">
+<meta property="og:description" content="##瓜子一周年专题之coding坑总结
+访问的路径是这个：http://sta.ganji.com/ng/app/che/c2c_app/index.html#app/che/common/misc/anniversary/view/anniversary.js
+开始说的是video标签，结果做的过程中需求有改变，遇到了各种坑，各种问题。1，在移动端的翻页是秋霞用插件直接加上的，pc端不可以翻页，">
+<meta property="og:updated_time" content="2015-11-27T08:08:32.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="guaziWF">
-<meta name="twitter:description" content="装环境, 上线流程
-
-装环境
-
-一共需要装node, git, svn, nginx工具的话用sublime和chrome, 还可以装个git和客户端提交时方便, charles用来代理连手机可以参照我们前端组的wiki: http://wiki.corp.ganji.com/%E5%89%8D%E7%AB%AF%E7%BB%84/%E5%85%B3%E4%BA%8ENG-staticubuntu">
+<meta name="twitter:description" content="##瓜子一周年专题之coding坑总结
+访问的路径是这个：http://sta.ganji.com/ng/app/che/c2c_app/index.html#app/che/common/misc/anniversary/view/anniversary.js
+开始说的是video标签，结果做的过程中需求有改变，遇到了各种坑，各种问题。1，在移动端的翻页是秋霞用插件直接加上的，pc端不可以翻页，">
 
 
 <script type="text/javascript" id="hexo.configuration">
@@ -202,8 +196,8 @@
         <div class="post-meta">
           <span class="post-time">
             發表於
-            <time itemprop="dateCreated" datetime="2015-11-18T11:01:18+08:00" content="2015-11-18">
-              2015-11-18
+            <time itemprop="dateCreated" datetime="2015-11-27T16:19:56+08:00" content="2015-11-27">
+              2015-11-27
             </time>
           </span>
 
@@ -226,16 +220,9 @@
       
 
       
-        <span itemprop="articleBody"><p>装环境, 上线流程<br><br></p>
-<hr>
-<p>装环境<br><br></p>
-<hr>
-<p>一共需要装node, git, svn, nginx<br><br>工具的话用sublime和chrome, 还可以装个git和客户端提交时方便, charles用来代理连手机<br><br>可以参照我们前端组的wiki: <a href="http://wiki.corp.ganji.com/%E5%89%8D%E7%AB%AF%E7%BB%84/%E5%85%B3%E4%BA%8ENG-static" target="_blank" rel="external">http://wiki.corp.ganji.com/%E5%89%8D%E7%AB%AF%E7%BB%84/%E5%85%B3%E4%BA%8ENG-static</a><br><br>ubuntu里面用npm来装, mac里用brew来装<br><br>brew在终端用命令 ruby -e “$(curl -fsSL <a href="https://raw.github.com/mxcl/homebrew/go" target="_blank" rel="external">https://raw.github.com/mxcl/homebrew/go</a>)”, 就可以装上, 之后想安装点什么东西就用 brew install xxxx 就可以<br><br>brew install node<br><br>brew install nginx<br><br>brew install svn<br><br>brew install git<br><br>ubuntu里面用npm就是 npm install xxxx 都一样的<br><br><br>这些工具都装上之后就可以把公司项目的代码拉到本地来, 可以先建个workplace文件夹, 以后工作的代码就都在这个文件夹里面, 进这个文件夹, 用命令 git clone 把(地址在wiki里面有), 拷到自己的电脑上<br>之后git里面所有的子模块都要先初始化, git submodule update –init , 再之后把所有的子模块都切换到 online 上, 不然之后会有乱问题, 可以用命令 git submodule foreach ‘git checkout online’ 但是这个命令可能执行不了, 那就手动一个个切 online , 基本的工具包括 ng_sta/src/app/che 下的client, ng_sta/src/com 下的g, mobile, 里面的lib,然后这些目录就一直保持在online 分支上干各种工作就对了(等牛逼那一天就有可能轮到改这里的文件了)<br> <br></p>
-<p>然后编译这里的文件, 用 grunt build, 全通过就对, 编译时候可能有不通过的地方也没关系, 进入到有问题的那个目录, checkout到online分支上pull一下, 然后再编译就能过了, 生成了一个build目录.<br><br>再之后要改nginx的配置, 一共两个地方, 输入 nginx -h 可以得到nginx安装的目录, 进这个目录改nginx.conf这个配置文件, 直接换一份就行; 还有就是在nginx目录下创建一个sites文件夹, 在里面 ganji_sta.conf这个配置文件, 要把里面的路径都改成自己的工作路径,<br> 然后环境就好了, 进到ng_sta里用grunt watch, 再保存ng_sta里的文件里时候就会自动编译, 生成编译后的文件在build目录里了.<br><br></p>
-<hr>
-<p>上线流程<br><br></p>
-<hr>
-<p>可以先建一个jira, 在apollo里右上角有个”创建问题”, 选择”web前端”, “新功能”, 会得到一个jira号, 再到gitlab里创建分支, “new branch”, 然后”name”就写jira号”feature/WF-xxxx”, “create from”, online, 就建完分支了.<br><br><br>代码写完后, 先把console.log那些都去掉, git commit push完, 在gitlab里能看到操作记录, 有merge request, 选好上到develop, 或者online, 提交merge request, 有权限的同学来merge, 就行了.</p>
+        <span itemprop="articleBody"><p>##瓜子一周年专题之coding坑总结</p>
+<p>访问的路径是这个：<a href="http://sta.ganji.com/ng/app/che/c2c_app/index.html#app/che/common/misc/anniversary/view/anniversary.js" target="_blank" rel="external">http://sta.ganji.com/ng/app/che/c2c_app/index.html#app/che/common/misc/anniversary/view/anniversary.js</a></p>
+<p>开始说的是video标签，结果做的过程中需求有改变，遇到了各种坑，各种问题。<br><br>1，在移动端的翻页是秋霞用插件直接加上的，pc端不可以翻页，这个插件是必须套在最外层的，但是移动端有个翻页开始在这个widget的外层加了一个div，导致翻页插件计算失误。以后遇到这种插件出问题的时候，多想想样式的页面结构<br><br>2，每次翻页有个图片插入的动画，需要在页面加载的时候根据屏幕的宽高给图片赋值，但是页面加载完成时，图片还没有加载进来，所以无法赋值。在页面的加载过程中，有时候样式是后面才加载的。这里用到了promise.all  或者anysc.series 就是一个所有图片都加载结束再赋值，重要的是这个coding的思维<br><br>3,分享按钮之样式，因为使用了app/che/common/lib/WeChatShare/share.js的分享widget,这里在test.html中分享的按钮放在页面的最下方，class为share 和我们的类名字冲突了，所以才会在一开始显示不出分享按钮。在手机测试过程中，小米的测试包有问题，所以一直没有反应。这里在使用别人的插件的时候，要看别人的样式和类名等等，不仅仅是调试的东西。<br><br>4，video自动播放在手机端不支持自动播放，同时在手机端第一次播放的时候加载有点问题，这个是兼容性的问题。<br><br>5，require.ansyc() 可以加载各种文件，参见js文件。开始自己写了一个加载link标签的方法，后来于新说可以直接使用require.ansyc()，异步加载这些<br><br>6, widget里直接function(){}<br><br>7，index.html的壳一定要用胜男的那个壳，这个时候要注意文件的路径问题<br><br>8，上传到git上的文件一定要是干净的，不用的文件都不要上传或者及时删除<br><br>9，注意模块化思想，加深理解<br><br>10，理解于新写的那些代码的思维和方法，值得学习</p>
 </span>
       
     </div>
@@ -247,17 +234,13 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2015/10/26/echarts/" rel="next" title="">
+              <a href="/2015/11/27/ganji_sta里代码结构/" rel="next" title="">
                 <i class="fa fa-chevron-left"></i> 
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2015/11/27/ganji_sta里代码结构/" rel="prev" title="">
-                 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
